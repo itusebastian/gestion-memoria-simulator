@@ -1,0 +1,322 @@
+body {
+  height: 60vh;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #181a20;
+  color: #e0e0e0;
+}
+
+.tabla {
+  width: 100%;
+  background-color: #23242b;
+  text-align: left;
+  border-collapse: collapse;
+  color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #000a;
+}
+
+.contenedorTablaProgramas,
+.contenedorTablaEjecutados,
+.contenedorTablaSegmentos,
+.contenedorTablaLibres,
+.contenedorTablaMarcos,
+.contenedorTablaTPP {
+  margin-left: 1px;
+  margin-top: 15px;
+  overflow-y: scroll;
+  background: #23242b;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #000a;
+}
+
+.contenedorTablaProgramas {
+  height: 320px%;
+  max-height: none;
+  margin-bottom: 25px;
+}
+.contenedorTablaEjecutados {
+  height: 860px;
+}
+.contenedorTablaSegmentos,
+.contenedorTablaLibres,
+.contenedorTablaMarcos,
+.contenedorTablaTPP {
+  height: 400px;
+}
+
+thead {
+  text-align: center;
+  background-color: #282c34;
+  color: #f9e506;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #23242b;
+}
+
+tr:nth-child(odd) {
+  background-color: #1b1c22;
+}
+
+tr:hover td {
+  background-color: #369681;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.titulo {
+  animation: glitch 1s linear infinite;
+  font-size: 1.5em;
+  color: #f9e506;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+.titulo:before,
+.titulo:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.titulo:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  color: #01cc65;
+}
+
+@keyframes glitchTop {
+  2%,
+  64% {
+    transform: translate(2px, -2px);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+.titulo:after {
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  color: #ff0044;
+}
+
+@keyframes glitchBotom {
+  2%,
+  64% {
+    transform: translate(-2px, 0);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+.labelOrd {
+  position: relative;
+  color: #01cc65;
+  font-size: 1.1em;
+  border: 2px solid #01cc65;
+  border-radius: 5px;
+  padding: 10px 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: #23242b;
+  margin-bottom: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.labelOrd::before {
+  content: "";
+  height: 30px;
+  width: 30px;
+  border: 3px solid #01cc65;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.labelOrd input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+.labelOrd:hover input ~ .checkmark {
+  background-color: #01cc65;
+  height: 16px;
+  width: 16px;
+  border: 10px solid #01cc65;
+}
+
+.labelOrd input:checked ~ .label {
+  color: #181a20;
+  background-color: #01cc65;
+}
+
+.labelOrd input:checked ~ .checkmark {
+  height: 16px;
+  width: 16px;
+  border: 10px solid #23242b;
+  background-color: #01cc65;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.labelOrd input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.labelOrd .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.container .box .Modelo {
+  margin-top: 20px;
+}
+
+.container .box #selecProgramas {
+  margin-top: 20px;
+  width: 250px;
+  height: 50px;
+  border: none;
+  color: #f9e506;
+  background-color: #23242b;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 0 #01cc65;
+  transition: ease-out 0.3s;
+  outline: none;
+  font-size: 1.1em;
+}
+
+.container .box #selecProgramas:hover {
+  box-shadow: inset 131px 0 0 0 #01cc65;
+  cursor: pointer;
+  color: #23242b;
+  background: #f9e506;
+}
+
+.form {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.form input {
+  width: 80%;
+  height: 80%;
+  color: #e0e0e0;
+  background: #181a20;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #282c34;
+  font-size: 1.1em;
+  border-radius: 4px;
+}
+
+.form input[name="name"] {
+  margin-bottom: 10px;
+}
+
+td button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+button {
+  width: 150px;
+  height: 50px;
+  border: none;
+  color: #181a20;
+  background-color: #f9e506;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px #000a;
+  transition: background 0.2s, color 0.2s;
+  font-size: 1.1em;
+}
+
+button:hover {
+  background-color: #01cc65;
+  color: #23242b;
+  box-shadow: 0 4px 16px #01cc6580;
+}
+
+#tamaño {
+  margin-top: 20px;
+}
+
+.box {
+  background-color: #23242b;
+  padding: 10px;
+  color: #e0e0e0;
+  overflow-y: scroll;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #000a;
+}
+
+.container {
+  grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  column-gap: 10px;
+  height: 98vh;
+  width: 100%;
+}
+
+.memoria {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnApagar:hover {
+  background-color: #ff3b3b !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px #ff3b3b80;
+}
