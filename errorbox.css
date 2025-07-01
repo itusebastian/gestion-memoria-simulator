@@ -1,0 +1,47 @@
+/* Contenedor de errores personalizado */
+#errorBox {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  max-width: 90vw;
+  background: #ff3b3b;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px #ff3b3b80;
+  padding: 18px 32px 18px 32px;
+  font-size: 1.1em;
+  z-index: 9999;
+  display: none;
+  text-align: center;
+  animation: fadeInError 0.3s;
+}
+
+#errorBox button {
+  margin-left: 20px;
+  background: #23242b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#errorBox button:hover {
+  background: #f9e506;
+  color: #23242b;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}

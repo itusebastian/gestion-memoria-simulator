@@ -346,7 +346,7 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe seleccionar un tipo de ajuste");
+                    mostrarError("Debe seleccionar un tipo de ajuste");
                 }
                 break;
             case 2:
@@ -357,7 +357,7 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe seleccionar un tipo de ajuste");
+                    mostrarError("Debe seleccionar un tipo de ajuste");
                 }
                 break;
             case 3:
@@ -370,7 +370,7 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe seleccionar un tipo de ajuste");
+                    mostrarError("Debe seleccionar un tipo de ajuste");
                 }
                 break;
             case 4:
@@ -384,7 +384,7 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe ingresar el número de particiones")
+                    mostrarError("Debe ingresar el número de particiones");
                 }
                 break;
             case 5:
@@ -395,7 +395,7 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe seleccionar un tipo de ajuste");
+                    mostrarError("Debe seleccionar un tipo de ajuste");
                 }
                 break;
             case 6:
@@ -412,11 +412,11 @@ function agregarListener() {
                     dibujarProceso("000000", "SO", 1048576);
                     activarBotones(botones);
                 } else {
-                    alert("Debe llenar el tamaño de la pagina");
+                    mostrarError("Debe llenar el tamaño de la pagina");
                 }
                 break;
             default:
-                alert("Debe seleccionar un método de gestión de memoria");
+                mostrarError("Debe seleccionar un método de gestión de memoria");
                 limpiarMemoria();
         }
         this.colores = [];
@@ -440,7 +440,7 @@ function agregarListener() {
             });
             llenarProgramas();
         } else {
-            alert("Error en el llenado del formulario");
+            mostrarError("Error en el llenado del formulario");
         }
     }, false)
 
@@ -667,12 +667,12 @@ function ejecutarProceso(proceso) {
     }, gestionMemoria, seleccionAjuste);
 
     if (resultado == 1) {
-        alert("Memoria insuficiente");
+        mostrarError("Memoria insuficiente");
         return 0;
     }
 
     if (resultado == 0) {
-        alert("Memoria llena");
+        mostrarError("Memoria llena");
         return 0;
     }
 
@@ -720,6 +720,20 @@ function dibujarProcesos() {
             dibujarProceso(segmento.posicion, "(" + segmento.proceso.id + ")" + segmento.proceso.nombre, segmento.proceso.tamano, segmento.proceso.id);
         }
     });
+}
+
+// Sistema de errores personalizados
+function mostrarError(mensaje) {
+    var errorBox = document.getElementById('errorBox');
+    if (!errorBox) return;
+    errorBox.innerHTML = mensaje + '<button onclick="ocultarError()">Cerrar</button>';
+    errorBox.style.display = 'block';
+}
+
+function ocultarError() {
+    var errorBox = document.getElementById('errorBox');
+    if (!errorBox) return;
+    errorBox.style.display = 'none';
 }
 
 function init() {
